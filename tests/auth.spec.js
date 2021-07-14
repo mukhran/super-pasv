@@ -3,12 +3,13 @@ import supertest from 'supertest';
 
 
 
+
 describe('auth', function(){
-    const request = supertest('https://paysis.herokuapp.com');
+    const request = supertest(BASE_URL);
     it('successful login', function(){
         request
             .post('/auth')
-            .send({login: 'adminius', password: 'supers3cret' })
+            .send({login: LOGIN, password: PASSWORD })
             .end(function(err, res){
                 expect(res.statusCode).to.eq(200);
                 expect(res.body.token).not.to.be.undefined;
